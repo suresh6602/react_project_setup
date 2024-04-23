@@ -10,3 +10,17 @@ headerWithToken.interceptors.request.use((config) => {
     config.headers['ngrok-skip-browser-warning'] = true;
     return config;
 });
+
+export const tokenExpires = async () => {
+    try {
+        const response = await headerWithToken.get('/apiendpoint');
+        if (response?.data?.responseObj?.responseMessage === 'Invalid token') {
+            Cookies.remove('token');
+            window.location.reload();
+        }
+
+        return response;
+    } catch (error) {
+        return error;
+    }
+};
