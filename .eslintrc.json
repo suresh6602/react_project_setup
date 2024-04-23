@@ -1,0 +1,73 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended", "plugin:prettier/recommended"],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "eslint-import-resolver-custom-alias": {
+                "alias": {
+                    "@": "./src"
+                },
+                "extensions": [".js", ".jsx"]
+            }
+        }
+    },
+    "overrides": [
+        {
+            "files": ["**/*.js", "**/*.jsx", "**/*.json"],
+            "rules": {
+                "prettier/prettier": "off"
+            }
+        }
+    ],
+    "plugins": ["react", "react-hooks", "prettier"],
+    "rules": {
+        "no-console": "error",
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "linebreak-style": ["error", "unix"],
+        "no-var": "error",
+        "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "FunctionDeclaration",
+                "message": "Use arrow functions"
+            }
+        ],
+        "react/no-unknown-property": "error", //use of unknown DOM properties in JSX
+        "react-hooks/rules-of-hooks": "error", //ensuring that hooks are called at the top level of React functions
+        "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-no-bind": [
+            "error",
+            {
+                "allowArrowFunctions": true,
+                "allowBind": false,
+                "ignoreRefs": true
+            }
+        ],
+        "react/prop-types": "off", // all props used in a component are validated using PropTypes.
+        "react/jsx-max-props-per-line": ["error", { "maximum": 10 }], //maximum number of props per line in JSX elements
+        "react/jsx-pascal-case": [
+            "error", // components in all caps
+            {
+                "allowAllCaps": true,
+                "ignore": []
+            }
+        ],
+        "react/jsx-uses-react": "error", //ensures that React is in scope when JSX is used.
+        "react/jsx-no-literals": "off" //all text content is passed through a function or variable.
+    }
+}

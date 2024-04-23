@@ -1,0 +1,1 @@
+// layout like header,sidebar
